@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace BeyondThemes.BeyondAdmin.Models
+namespace TDS.Socio.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Collections.Generic;
-using BeyondThemes.BeyondAdmin.Models;
+using TDS.Socio.Models;
 using System.Linq;
 
 
-namespace BeyondThemes.BeyondAdmin.Controllers
+namespace TDS.Socio.Controllers
 {
     public class HomeController : Controller
     {

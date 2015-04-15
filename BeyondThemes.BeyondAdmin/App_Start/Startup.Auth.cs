@@ -1,5 +1,5 @@
 ﻿using System;
-using BeyondThemes.BeyondAdmin.Models;
+using TDS.Socio.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
@@ -7,7 +7,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 
-namespace BeyondThemes.BeyondAdmin
+namespace TDS.Socio
 {
     public partial class Startup
     {

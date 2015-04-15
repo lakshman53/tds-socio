@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BeyondThemes.BeyondAdmin
+namespace TDS.Socio
 {
     using System;
     

@@ -2,12 +2,12 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using BeyondThemes.BeyondAdmin.Models;
+using TDS.Socio.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
-namespace BeyondThemes.BeyondAdmin.Controllers
+namespace TDS.Socio.Controllers
 {
     [Authorize]
     public class AccountController : Controller
