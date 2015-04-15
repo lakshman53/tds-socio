@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Blank Page";
+    ViewBag.Description = "blank page";
+    Layout = "~/Views/Shared/_Default.cshtml";
+}
+
+@{ 
+    using(Html.BeginForm("ProcessForm","Home",FormMethod.Post)){ 
+    <div class="row">
+        <div class="col-lg-3 col-sm-3 col-xs-12">
+
+            @Html.DropDownList("regions", ViewData["regions"] as SelectList, new { @id = "region", style = "width:100%;" })
+
+        </div>
+
+        <div class="col-lg-3 col-sm-3 col-xs-12">
+
+            <select id="state" style="width:100%;"><option ></option></select>
+            </div>
+        </div>
+    <hr  />
+    <div class="row">
+
+        <div class="col-lg-3 col-sm-3 col-xs-12">
+
+
+            <input type="submit" class="btn btn-primary" value="Submit" />
+            </div>
+        </div>
+        }
+        }
+
+     
+        @section PageScripts{
+
+            <script src="/assets/js/select2/select2.js"></script>
+
+             <script>
+                //--Jquery Select2--
+                $("#region").select2();
+                $("#state").select2();
+                $('#state').select2({ placeholder: 'Select a State' });
+
+                $(document).ready(function () {
+                    $("#state").prop("disabled", true);
+                    $("#region").change(function () {
+                        if ($("#region").val() != "Please select") {
+                            $("#walkForAmount").select2("Select a State");
+                            var options = {};
+                            options.url = "/home/getstates";
+                            options.type = "POST";
+                            options.data = JSON.stringify({ country: $("#region").val() });
+                            options.dataType = "json";
+                            options.contentType = "application/json";
+                            options.success = function (states) {
+                                $("#state").empty();
+                                for (var i = 0; i < states.length; i++) {
+                                    $("#state").append("<option>" + states[i] + "</option>");
+                                }
+                                $("#state").prop("disabled", false);
+                            };
+                            options.error = function () { alert("Error retrieving states!"); };
+                            $.ajax(options);
+                        }
+                        else {
+                            $("#state").empty();
+                            $("#state").prop("disabled", true);
+                        }
+                    });
+                });
+            
+            </script>
+        }

@@ -1,0 +1,1047 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="sociodataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="AreaId" />
+          </Key>
+          <Property Name="AreaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Area" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PersResponsible" Type="int" />
+        </EntityType>
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogDate" Type="date" />
+          <Property Name="EmpId" Type="int" Nullable="false" />
+          <Property Name="InEmpImage" Type="varchar" MaxLength="100" />
+          <Property Name="InLatitude" Type="float" />
+          <Property Name="InLongitude" Type="float" />
+          <Property Name="InDistance" Type="int" />
+          <Property Name="InTime" Type="time" Precision="7" />
+          <Property Name="OutEmpImage" Type="varchar" MaxLength="100" />
+          <Property Name="OutLatitude" Type="float" />
+          <Property Name="OutLongitude" Type="float" />
+          <Property Name="OutDistance" Type="int" />
+          <Property Name="OutTime" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PersResponsible" Type="int" />
+          <Property Name="CityCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Designation">
+          <Key>
+            <PropertyRef Name="DesignationId" />
+          </Key>
+          <Property Name="DesignationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmpGroups">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpId" Type="int" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpNum" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="StoreId" Type="int" />
+          <Property Name="MaxDistFromStore" Type="int" />
+          <Property Name="validationText" Type="int" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" />
+          <Property Name="DOJ" Type="date" />
+          <Property Name="Designation" Type="int" />
+          <Property Name="WeeklyOff" Type="smallint" />
+          <Property Name="OfficeStart" Type="time" Precision="7" />
+          <Property Name="OfficeEnd" Type="time" Precision="7" />
+          <Property Name="ClientEmpNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpImage" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6005: The data type 'hierarchyid' is currently not supported for the target Entity Framework version; the column 'EntitiyHierarchyId' in the table 'sociodata.dbo.EntitiyHierarchy' was excluded.
+warning 6031: The column 'EntitiyHierarchyId' on the table/view 'sociodata.dbo.EntitiyHierarchy' was excluded, and is a key column.  The table/view has been excluded.  Please fix the entity in the schema file, and uncomment.
+        <EntityType Name="EntitiyHierarchy">
+          <Property Name="EntityId" Type="int" Nullable="false" />
+          <Property Name="EntityType" Type="int" Nullable="false" />
+          <Property Name="EntityName" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <EntityType Name="Entity">
+          <Key>
+            <PropertyRef Name="EntityId" />
+          </Key>
+          <Property Name="EntityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EntityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EntityOrder" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Offer">
+          <Key>
+            <PropertyRef Name="OfferId" />
+          </Key>
+          <Property Name="OfferId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sender" Type="nvarchar" MaxLength="100" />
+          <Property Name="subject" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="message" Type="nvarchar" MaxLength="255" />
+          <Property Name="sent" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OfferGroups">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OfferId" Type="int" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="RegionId" />
+          </Key>
+          <Property Name="RegionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Region" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PersResponsible" Type="int" />
+          <Property Name="RegionCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="StoreId" />
+          </Key>
+          <Property Name="StoreId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StoreName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Latitude" Type="float" />
+          <Property Name="Longitude" Type="float" />
+          <Property Name="StoreOpen" Type="time" Precision="7" />
+          <Property Name="StoreClose" Type="time" Precision="7" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Area" Type="int" />
+          <Property Name="City" Type="int" />
+          <Property Name="Region" Type="int" />
+          <Property Name="StoreOff" Type="smallint" />
+          <Property Name="StoreCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Area_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Area" Type="Self.Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="Area">
+              <PropertyRef Name="PersResponsible" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attendance_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="Attendance">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="PersResponsible" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpGroups_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="EmpGroups" Type="Self.EmpGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="EmpGroups">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpGroups_Group">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="EmpGroups" Type="Self.EmpGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="EmpGroups">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Designation">
+          <End Role="Designation" Type="Self.Designation" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Designation">
+              <PropertyRef Name="DesignationId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Designation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Store">
+          <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="StoreId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="StoreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferGroups_Group">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="OfferGroups" Type="Self.OfferGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="OfferGroups">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferGroups_Offer">
+          <End Role="Offer" Type="Self.Offer" Multiplicity="1" />
+          <End Role="OfferGroups" Type="Self.OfferGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offer">
+              <PropertyRef Name="OfferId" />
+            </Principal>
+            <Dependent Role="OfferGroups">
+              <PropertyRef Name="OfferId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Region_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Region" Type="Self.Region" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="Region">
+              <PropertyRef Name="PersResponsible" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Store_Area">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="Store" Type="Self.Store" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="AreaId" />
+            </Principal>
+            <Dependent Role="Store">
+              <PropertyRef Name="Area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Store_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Store" Type="Self.Store" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="Store">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Store_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Store" Type="Self.Store" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="RegionId" />
+            </Principal>
+            <Dependent Role="Store">
+              <PropertyRef Name="Region" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="usp_AddArea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="level2id" Type="int" Mode="In" />
+          <Parameter Name="level3id" Type="int" Mode="In" />
+          <Parameter Name="EntityName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_AddCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="level1id" Type="int" Mode="In" />
+          <Parameter Name="level2id" Type="int" Mode="In" />
+          <Parameter Name="EntityName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_AddRegion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="regionid" Type="int" Mode="In" />
+          <Parameter Name="EntityName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_AddStore" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="level3id" Type="int" Mode="In" />
+          <Parameter Name="level4id" Type="int" Mode="In" />
+          <Parameter Name="EntityName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_getArea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="thisHId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_getCities" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="thisHId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_getRegion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="thisHId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_getStores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="thisHId" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="sociodataModelStoreContainer">
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Attendance" EntityType="Self.Attendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpGroups" EntityType="Self.EmpGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entity" EntityType="Self.Entity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Offer" EntityType="Self.Offer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfferGroups" EntityType="Self.OfferGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Area_Employee" Association="Self.FK_Area_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Area" EntitySet="Area" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attendance_Employee" Association="Self.FK_Attendance_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Attendance" EntitySet="Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_Employee" Association="Self.FK_City_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpGroups_Employee" Association="Self.FK_EmpGroups_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpGroups" EntitySet="EmpGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpGroups_Group" Association="Self.FK_EmpGroups_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="EmpGroups" EntitySet="EmpGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Designation" Association="Self.FK_Employee_Designation">
+            <End Role="Designation" EntitySet="Designation" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Store" Association="Self.FK_Employee_Store">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferGroups_Group" Association="Self.FK_OfferGroups_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="OfferGroups" EntitySet="OfferGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferGroups_Offer" Association="Self.FK_OfferGroups_Offer">
+            <End Role="Offer" EntitySet="Offer" />
+            <End Role="OfferGroups" EntitySet="OfferGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Region_Employee" Association="Self.FK_Region_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Region" EntitySet="Region" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Store_Area" Association="Self.FK_Store_Area">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Store" EntitySet="Store" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Store_City" Association="Self.FK_Store_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Store" EntitySet="Store" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Store_Region" Association="Self.FK_Store_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Store" EntitySet="Store" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sociodataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="azure_sociodataEntities1" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="usp_AddArea">
+            <Parameter Name="level2id" Mode="In" Type="Int32" />
+            <Parameter Name="level3id" Mode="In" Type="Int32" />
+            <Parameter Name="EntityName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_AddCity">
+            <Parameter Name="level1id" Mode="In" Type="Int32" />
+            <Parameter Name="level2id" Mode="In" Type="Int32" />
+            <Parameter Name="EntityName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_AddRegion">
+            <Parameter Name="regionid" Mode="In" Type="Int32" />
+            <Parameter Name="EntityName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_AddStore">
+            <Parameter Name="level3id" Mode="In" Type="Int32" />
+            <Parameter Name="level4id" Mode="In" Type="Int32" />
+            <Parameter Name="EntityName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_getArea" ReturnType="Collection(sociodataModel.usp_getArea_Result)">
+          <Parameter Name="thisHId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_getCities" ReturnType="Collection(sociodataModel.usp_getCities_Result)">
+          <Parameter Name="thisHId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_getRegion" ReturnType="Collection(sociodataModel.usp_getRegion_Result)">
+          <Parameter Name="thisHId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_getStores" ReturnType="Collection(sociodataModel.usp_getStores_Result)">
+          <Parameter Name="thisHId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Areas" EntityType="sociodataModel.Area" />
+          <EntitySet Name="Attendances" EntityType="sociodataModel.Attendance" />
+          <EntitySet Name="Cities" EntityType="sociodataModel.City" />
+          <EntitySet Name="Designations" EntityType="sociodataModel.Designation" />
+          <EntitySet Name="EmpGroups" EntityType="sociodataModel.EmpGroup" />
+          <EntitySet Name="Employees" EntityType="sociodataModel.Employee" />
+          <EntitySet Name="Entities" EntityType="sociodataModel.Entity" />
+          <EntitySet Name="Groups" EntityType="sociodataModel.Group" />
+          <EntitySet Name="Offers" EntityType="sociodataModel.Offer" />
+          <EntitySet Name="OfferGroups" EntityType="sociodataModel.OfferGroup" />
+          <EntitySet Name="Regions" EntityType="sociodataModel.Region" />
+          <EntitySet Name="Stores" EntityType="sociodataModel.Store" />
+          <AssociationSet Name="FK_Area_Employee" Association="sociodataModel.FK_Area_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Area" EntitySet="Areas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Store_Area" Association="sociodataModel.FK_Store_Area">
+            <End Role="Area" EntitySet="Areas" />
+            <End Role="Store" EntitySet="Stores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attendance_Employee" Association="sociodataModel.FK_Attendance_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Attendance" EntitySet="Attendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_Employee" Association="sociodataModel.FK_City_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Store_City" Association="sociodataModel.FK_Store_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Store" EntitySet="Stores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Designation" Association="sociodataModel.FK_Employee_Designation">
+            <End Role="Designation" EntitySet="Designations" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpGroups_Employee" Association="sociodataModel.FK_EmpGroups_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="EmpGroup" EntitySet="EmpGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpGroups_Group" Association="sociodataModel.FK_EmpGroups_Group">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="EmpGroup" EntitySet="EmpGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Store" Association="sociodataModel.FK_Employee_Store">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Region_Employee" Association="sociodataModel.FK_Region_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Region" EntitySet="Regions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferGroups_Group" Association="sociodataModel.FK_OfferGroups_Group">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="OfferGroup" EntitySet="OfferGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferGroups_Offer" Association="sociodataModel.FK_OfferGroups_Offer">
+            <End Role="Offer" EntitySet="Offers" />
+            <End Role="OfferGroup" EntitySet="OfferGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Store_Region" Association="sociodataModel.FK_Store_Region">
+            <End Role="Region" EntitySet="Regions" />
+            <End Role="Store" EntitySet="Stores" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="usp_getArea_Result">
+          <Property Type="Int32" Name="EntityId" Nullable="false" />
+          <Property Type="Int32" Name="EntityType" Nullable="false" />
+          <Property Type="String" Name="EntityName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_getCities_Result">
+          <Property Type="Int32" Name="CityId" Nullable="false" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_getRegion_Result">
+          <Property Type="Int32" Name="EntityId" Nullable="false" />
+          <Property Type="Int32" Name="EntityType" Nullable="false" />
+          <Property Type="String" Name="EntityName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_getStores_Result">
+          <Property Type="Int32" Name="EntityId" Nullable="false" />
+          <Property Type="Int32" Name="EntityType" Nullable="false" />
+          <Property Type="String" Name="EntityName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="AreaId" />
+          </Key>
+          <Property Name="AreaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Area1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersResponsible" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="sociodataModel.FK_Area_Employee" FromRole="Area" ToRole="Employee" />
+          <NavigationProperty Name="Stores" Relationship="sociodataModel.FK_Store_Area" FromRole="Area" ToRole="Store" />
+        </EntityType>
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogDate" Type="DateTime" Precision="0" />
+          <Property Name="EmpId" Type="Int32" Nullable="false" />
+          <Property Name="InEmpImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="InLatitude" Type="Double" />
+          <Property Name="InLongitude" Type="Double" />
+          <Property Name="InDistance" Type="Int32" />
+          <Property Name="InTime" Type="Time" Precision="7" />
+          <Property Name="OutEmpImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OutLatitude" Type="Double" />
+          <Property Name="OutLongitude" Type="Double" />
+          <Property Name="OutDistance" Type="Int32" />
+          <Property Name="OutTime" Type="Time" Precision="7" />
+          <NavigationProperty Name="Employee" Relationship="sociodataModel.FK_Attendance_Employee" FromRole="Attendance" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersResponsible" Type="Int32" />
+          <Property Name="CityCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="sociodataModel.FK_City_Employee" FromRole="City" ToRole="Employee" />
+          <NavigationProperty Name="Stores" Relationship="sociodataModel.FK_Store_City" FromRole="City" ToRole="Store" />
+        </EntityType>
+        <EntityType Name="Designation">
+          <Key>
+            <PropertyRef Name="DesignationId" />
+          </Key>
+          <Property Name="DesignationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Designation1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="sociodataModel.FK_Employee_Designation" FromRole="Designation" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="EmpGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpId" Type="Int32" Nullable="false" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="sociodataModel.FK_EmpGroups_Employee" FromRole="EmpGroup" ToRole="Employee" />
+          <NavigationProperty Name="Group" Relationship="sociodataModel.FK_EmpGroups_Group" FromRole="EmpGroup" ToRole="Group" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpNum" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StoreId" Type="Int32" />
+          <Property Name="MaxDistFromStore" Type="Int32" />
+          <Property Name="validationText" Type="Int32" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DOJ" Type="DateTime" Precision="0" />
+          <Property Name="Designation" Type="Int32" />
+          <Property Name="WeeklyOff" Type="Int16" />
+          <Property Name="OfficeStart" Type="Time" Precision="7" />
+          <Property Name="OfficeEnd" Type="Time" Precision="7" />
+          <Property Name="ClientEmpNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmpImage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Areas" Relationship="sociodataModel.FK_Area_Employee" FromRole="Employee" ToRole="Area" />
+          <NavigationProperty Name="Attendances" Relationship="sociodataModel.FK_Attendance_Employee" FromRole="Employee" ToRole="Attendance" />
+          <NavigationProperty Name="Cities" Relationship="sociodataModel.FK_City_Employee" FromRole="Employee" ToRole="City" />
+          <NavigationProperty Name="Designation1" Relationship="sociodataModel.FK_Employee_Designation" FromRole="Employee" ToRole="Designation" />
+          <NavigationProperty Name="EmpGroups" Relationship="sociodataModel.FK_EmpGroups_Employee" FromRole="Employee" ToRole="EmpGroup" />
+          <NavigationProperty Name="Store" Relationship="sociodataModel.FK_Employee_Store" FromRole="Employee" ToRole="Store" />
+          <NavigationProperty Name="Regions" Relationship="sociodataModel.FK_Region_Employee" FromRole="Employee" ToRole="Region" />
+        </EntityType>
+        <EntityType Name="Entity">
+          <Key>
+            <PropertyRef Name="EntityId" />
+          </Key>
+          <Property Name="EntityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EntityName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EntityOrder" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmpGroups" Relationship="sociodataModel.FK_EmpGroups_Group" FromRole="Group" ToRole="EmpGroup" />
+          <NavigationProperty Name="OfferGroups" Relationship="sociodataModel.FK_OfferGroups_Group" FromRole="Group" ToRole="OfferGroup" />
+        </EntityType>
+        <EntityType Name="Offer">
+          <Key>
+            <PropertyRef Name="OfferId" />
+          </Key>
+          <Property Name="OfferId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sender" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="subject" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="message" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="sent" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="OfferGroups" Relationship="sociodataModel.FK_OfferGroups_Offer" FromRole="Offer" ToRole="OfferGroup" />
+        </EntityType>
+        <EntityType Name="OfferGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OfferId" Type="Int32" Nullable="false" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="sociodataModel.FK_OfferGroups_Group" FromRole="OfferGroup" ToRole="Group" />
+          <NavigationProperty Name="Offer" Relationship="sociodataModel.FK_OfferGroups_Offer" FromRole="OfferGroup" ToRole="Offer" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="RegionId" />
+          </Key>
+          <Property Name="RegionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Region1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersResponsible" Type="Int32" />
+          <Property Name="RegionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="sociodataModel.FK_Region_Employee" FromRole="Region" ToRole="Employee" />
+          <NavigationProperty Name="Stores" Relationship="sociodataModel.FK_Store_Region" FromRole="Region" ToRole="Store" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="StoreId" />
+          </Key>
+          <Property Name="StoreId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StoreName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="Longitude" Type="Double" />
+          <Property Name="StoreOpen" Type="Time" Precision="7" />
+          <Property Name="StoreClose" Type="Time" Precision="7" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Area" Type="Int32" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="Region" Type="Int32" />
+          <Property Name="StoreOff" Type="Int16" />
+          <Property Name="StoreCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Area1" Relationship="sociodataModel.FK_Store_Area" FromRole="Store" ToRole="Area" />
+          <NavigationProperty Name="City1" Relationship="sociodataModel.FK_Store_City" FromRole="Store" ToRole="City" />
+          <NavigationProperty Name="Employees" Relationship="sociodataModel.FK_Employee_Store" FromRole="Store" ToRole="Employee" />
+          <NavigationProperty Name="Region1" Relationship="sociodataModel.FK_Store_Region" FromRole="Store" ToRole="Region" />
+        </EntityType>
+        <Association Name="FK_Area_Employee">
+          <End Type="sociodataModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="sociodataModel.Area" Role="Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="Area">
+              <PropertyRef Name="PersResponsible" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Store_Area">
+          <End Type="sociodataModel.Area" Role="Area" Multiplicity="0..1" />
+          <End Type="sociodataModel.Store" Role="Store" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="AreaId" />
+            </Principal>
+            <Dependent Role="Store">
+              <PropertyRef Name="Area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attendance_Employee">
+          <End Type="sociodataModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="sociodataModel.Attendance" Role="Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="Attendance">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_Employee">
+          <End Type="sociodataModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="sociodataModel.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="PersResponsible" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Store_City">
+          <End Type="sociodataModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="sociodataModel.Store" Role="Store" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="Store">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Designation">
+          <End Type="sociodataModel.Designation" Role="Designation" Multiplicity="0..1" />
+          <End Type="sociodataModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Designation">
+              <PropertyRef Name="DesignationId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Designation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpGroups_Employee">
+          <End Type="sociodataModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="sociodataModel.EmpGroup" Role="EmpGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="EmpGroup">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpGroups_Group">
+          <End Type="sociodataModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="sociodataModel.EmpGroup" Role="EmpGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="EmpGroup">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Store">
+          <End Type="sociodataModel.Store" Role="Store" Multiplicity="0..1" />
+          <End Type="sociodataModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="StoreId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="StoreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Region_Employee">
+          <End Type="sociodataModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="sociodataModel.Region" Role="Region" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="Region">
+              <PropertyRef Name="PersResponsible" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferGroups_Group">
+          <End Type="sociodataModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="sociodataModel.OfferGroup" Role="OfferGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="OfferGroup">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferGroups_Offer">
+          <End Type="sociodataModel.Offer" Role="Offer" Multiplicity="1" />
+          <End Type="sociodataModel.OfferGroup" Role="OfferGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offer">
+              <PropertyRef Name="OfferId" />
+            </Principal>
+            <Dependent Role="OfferGroup">
+              <PropertyRef Name="OfferId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Store_Region">
+          <End Type="sociodataModel.Region" Role="Region" Multiplicity="0..1" />
+          <End Type="sociodataModel.Store" Role="Store" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="RegionId" />
+            </Principal>
+            <Dependent Role="Store">
+              <PropertyRef Name="Region" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="sociodataModelStoreContainer" CdmEntityContainer="azure_sociodataEntities1" >
+          <FunctionImportMapping FunctionImportName="usp_AddArea" FunctionName="sociodataModel.Store.usp_AddArea" />
+          <FunctionImportMapping FunctionImportName="usp_AddCity" FunctionName="sociodataModel.Store.usp_AddCity" />
+          <FunctionImportMapping FunctionImportName="usp_AddRegion" FunctionName="sociodataModel.Store.usp_AddRegion" />
+          <FunctionImportMapping FunctionImportName="usp_AddStore" FunctionName="sociodataModel.Store.usp_AddStore" />
+          <FunctionImportMapping FunctionImportName="usp_getArea" FunctionName="sociodataModel.Store.usp_getArea">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sociodataModel.usp_getArea_Result">
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+                <ScalarProperty Name="EntityType" ColumnName="EntityType" />
+                <ScalarProperty Name="EntityName" ColumnName="EntityName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_getCities" FunctionName="sociodataModel.Store.usp_getCities">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sociodataModel.usp_getCities_Result">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_getRegion" FunctionName="sociodataModel.Store.usp_getRegion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sociodataModel.usp_getRegion_Result">
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+                <ScalarProperty Name="EntityType" ColumnName="EntityType" />
+                <ScalarProperty Name="EntityName" ColumnName="EntityName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_getStores" FunctionName="sociodataModel.Store.usp_getStores">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sociodataModel.usp_getStores_Result">
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+                <ScalarProperty Name="EntityType" ColumnName="EntityType" />
+                <ScalarProperty Name="EntityName" ColumnName="EntityName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Areas">
+            <EntityTypeMapping TypeName="sociodataModel.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="PersResponsible" ColumnName="PersResponsible" />
+                <ScalarProperty Name="Area1" ColumnName="Area" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Attendances">
+            <EntityTypeMapping TypeName="sociodataModel.Attendance">
+              <MappingFragment StoreEntitySet="Attendance">
+                <ScalarProperty Name="OutTime" ColumnName="OutTime" />
+                <ScalarProperty Name="OutDistance" ColumnName="OutDistance" />
+                <ScalarProperty Name="OutLongitude" ColumnName="OutLongitude" />
+                <ScalarProperty Name="OutLatitude" ColumnName="OutLatitude" />
+                <ScalarProperty Name="OutEmpImage" ColumnName="OutEmpImage" />
+                <ScalarProperty Name="InTime" ColumnName="InTime" />
+                <ScalarProperty Name="InDistance" ColumnName="InDistance" />
+                <ScalarProperty Name="InLongitude" ColumnName="InLongitude" />
+                <ScalarProperty Name="InLatitude" ColumnName="InLatitude" />
+                <ScalarProperty Name="InEmpImage" ColumnName="InEmpImage" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="LogDate" ColumnName="LogDate" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="sociodataModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+                <ScalarProperty Name="PersResponsible" ColumnName="PersResponsible" />
+                <ScalarProperty Name="City1" ColumnName="City" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Designations">
+            <EntityTypeMapping TypeName="sociodataModel.Designation">
+              <MappingFragment StoreEntitySet="Designation">
+                <ScalarProperty Name="Designation1" ColumnName="Designation" />
+                <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpGroups">
+            <EntityTypeMapping TypeName="sociodataModel.EmpGroup">
+              <MappingFragment StoreEntitySet="EmpGroups">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="sociodataModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmpImage" ColumnName="EmpImage" />
+                <ScalarProperty Name="ClientEmpNum" ColumnName="ClientEmpNum" />
+                <ScalarProperty Name="OfficeEnd" ColumnName="OfficeEnd" />
+                <ScalarProperty Name="OfficeStart" ColumnName="OfficeStart" />
+                <ScalarProperty Name="WeeklyOff" ColumnName="WeeklyOff" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="validationText" ColumnName="validationText" />
+                <ScalarProperty Name="MaxDistFromStore" ColumnName="MaxDistFromStore" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmpNum" ColumnName="EmpNum" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entities">
+            <EntityTypeMapping TypeName="sociodataModel.Entity">
+              <MappingFragment StoreEntitySet="Entity">
+                <ScalarProperty Name="EntityOrder" ColumnName="EntityOrder" />
+                <ScalarProperty Name="EntityName" ColumnName="EntityName" />
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="sociodataModel.Group">
+              <MappingFragment StoreEntitySet="Group">
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offers">
+            <EntityTypeMapping TypeName="sociodataModel.Offer">
+              <MappingFragment StoreEntitySet="Offer">
+                <ScalarProperty Name="sent" ColumnName="sent" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="sender" ColumnName="sender" />
+                <ScalarProperty Name="OfferId" ColumnName="OfferId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfferGroups">
+            <EntityTypeMapping TypeName="sociodataModel.OfferGroup">
+              <MappingFragment StoreEntitySet="OfferGroups">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="OfferId" ColumnName="OfferId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regions">
+            <EntityTypeMapping TypeName="sociodataModel.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
+                <ScalarProperty Name="PersResponsible" ColumnName="PersResponsible" />
+                <ScalarProperty Name="Region1" ColumnName="Region" />
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stores">
+            <EntityTypeMapping TypeName="sociodataModel.Store">
+              <MappingFragment StoreEntitySet="Store">
+                <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+                <ScalarProperty Name="StoreOff" ColumnName="StoreOff" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="StoreClose" ColumnName="StoreClose" />
+                <ScalarProperty Name="StoreOpen" ColumnName="StoreOpen" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

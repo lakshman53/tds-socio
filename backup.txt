@@ -1,0 +1,104 @@
+   @*
+            <div class="row">
+                <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="databox radius-bordered databox-shadowed databox-graded">
+                        <div class="databox-left bg-success">
+                            <div class="databox-piechart">
+                                <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="42" data-animate="500" data-linewidth="3" data-size="47" data-trackcolor="#f39e93"><span class="white font-90">42%</span></div>
+                            </div>
+                        </div>
+                        <div class="databox-right">
+                            <span class="databox-number success">322</span>
+                            <div class="databox-text darkgray">UNIQUE USERS</div>
+                            <div class="databox-stat bg-success radius-bordered">
+                                <div class="stat-text">4%</div>
+                                <i class="stat-icon fa fa-arrow-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div><div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="databox radius-bordered databox-shadowed databox-graded">
+                        <div class="databox-left bg-lightred">
+                            <div class="databox-piechart">
+                                <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="42" data-animate="500" data-linewidth="3" data-size="47" data-trackcolor="#f39e93"><span class="white font-90">42%</span></div>
+                            </div>
+                        </div>
+                        <div class="databox-right">
+                            <span class="databox-number lightred">322</span>
+                            <div class="databox-text darkgray">UNIQUE USERS</div>
+                            <div class="databox-stat bg-lightred radius-bordered">
+                                <div class="stat-text">4%</div>
+                                <i class="stat-icon fa fa-arrow-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div><div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="databox radius-bordered databox-shadowed databox-graded">
+                        <div class="databox-left bg-lightred">
+                            <div class="databox-piechart">
+                                <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="42" data-animate="500" data-linewidth="3" data-size="47" data-trackcolor="#f39e93"><span class="white font-90">42%</span></div>
+                            </div>
+                        </div>
+                        <div class="databox-right">
+                            <span class="databox-number lightred">322</span>
+                            <div class="databox-text darkgray">UNIQUE USERS</div>
+                            <div class="databox-stat bg-lightred radius-bordered">
+                                <div class="stat-text">4%</div>
+                                <i class="stat-icon fa fa-arrow-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div><div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="databox radius-bordered databox-shadowed databox-graded">
+                        <div class="databox-left bg-lightred">
+                            <div class="databox-piechart">
+                                <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="42" data-animate="500" data-linewidth="3" data-size="47" data-trackcolor="#f39e93"><span class="white font-90">42%</span></div>
+                            </div>
+                        </div>
+                        <div class="databox-right">
+                            <span class="databox-number lightred">322</span>
+                            <div class="databox-text darkgray">UNIQUE USERS</div>
+                            <div class="databox-stat bg-lightred radius-bordered">
+                                <div class="stat-text">4%</div>
+                                <i class="stat-icon fa fa-arrow-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">
+
+                        <div class="dashboard-box">
+
+                            <div class="col-lg-12 col-sm-12 col-xs-12">
+                                <div class="widget">
+                                    <div class="widget-header bg-azure bordered-bottom bordered-magenta">
+                                        <span class="widget-caption">Widget with Dropdown</span>
+                                        <div class="btn-group">
+                                            @Html.Bootstrap().Button().Text("This Week").Color(BootstrapColors.Default).Color(BootstrapColors.Yellow)
+                                            @Html.Bootstrap().Button().Text("Last Week").Color(BootstrapColors.Default)
+                                            @Html.Bootstrap().Button().Text("This Month").Color(BootstrapColors.Default)
+                                            @Html.Bootstrap().Button().Text("Last Month").Color(BootstrapColors.Default)
+
+                                        </div>
+                                    </div>
+                                    <div class="widget-body">
+
+
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+        *@
