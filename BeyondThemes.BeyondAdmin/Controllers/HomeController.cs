@@ -21,9 +21,16 @@ namespace TDS.Socio.Controllers
             
             return View();
         }
-        
-        
-        
+
+        public ActionResult AddStore()
+        {
+            return View();
+        }
+
+        public ActionResult EmployeeProfile()
+        {
+            return View();
+        }
         public ActionResult Blank()
         {
             List<string> items = new List<string>();

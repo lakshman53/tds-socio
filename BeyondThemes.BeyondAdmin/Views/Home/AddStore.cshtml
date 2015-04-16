@@ -1,0 +1,205 @@
+﻿@{
+    ViewBag.Title = "Add Store";
+    ViewBag.Description = "Add a new Store";
+    Layout = "~/Views/Shared/_Default.cshtml";
+}
+
+@{
+    using (Html.BeginForm("ProcessForm", "Home", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-lg-offset-1 col-sm-offset-1 col-xs-offset-2 col-lg-10 col-sm-10 col-xs-12">
+
+                @using (WidgetBuilder<dynamic> widget = Html.Bootstrap().Begin(new Widget().Caption("Primary Information")))
+                {
+                    using (WidgetSectionPanel header = widget.BeginHeader())
+                    {
+                    }
+                    using (widget.BeginBody())
+                    {
+                        <div class="row">
+
+                            <div class="col-lg-12 col-sm-12 col-xs-12">
+
+                                <div class="row">
+
+
+                                    <div class="col-lg-4 col-sm-4 col-xs-6">
+
+                                        <select id="region" name="gender" style="width:100%">
+                                            <option value="-1">Select Region</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-lg-4 col-sm-4 col-xs-6">
+
+
+                                        <select id="city" name="city" style="width:100%">
+                                            <option value="-1">Select City</option>
+                                        </select>                                    
+                                    
+                                    </div>
+
+                                    <div class="col-lg-4 col-sm-4 col-xs-6">
+
+
+                                        <select id="area" name="area" style="width:100%">
+                                            <option value="-1">Select Area</option>
+                                        </select>
+
+
+                                    </div>
+
+                                </div>
+                                <br />
+
+                                <div class="row">
+
+
+                                    <div class="col-lg-8 col-sm-8 col-xs-12">
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="userameInput1" placeholder="Store Name">
+                                        </div>
+                                    </div>
+
+                                   
+
+                                    <div class="col-lg-4 col-sm-4 col-xs-6">
+
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="userameInput3" placeholder="Store Code">
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+
+
+                                    <div class="col-lg-12 col-sm-12 col-xs-12">
+
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="userameInput3" placeholder="Store Address">
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+
+
+
+
+                            </div>
+
+                        </div>
+                    }
+                }
+
+
+
+
+            </div>
+        </div>
+
+    <div class="row">
+        <div class="col-lg-offset-1 col-sm-offset-1 col-xs-offset-2 col-lg-10 col-sm-10 col-xs-12">
+
+            @using (WidgetBuilder<dynamic> widget = Html.Bootstrap().Begin(new Widget().Caption("Store Operations")))
+            {
+                using (WidgetSectionPanel header = widget.BeginHeader())
+                {
+                }
+                using (widget.BeginBody())
+                {
+                    <div class="row">
+
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+
+                            <div class="row">
+
+
+                                <div class="col-lg-4 col-sm-4 col-xs-8">
+
+                                    <input type="text" class="form-control" id="starttime" placeholder="Office Start">
+
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-xs-8">
+
+                                    <input type="text" class="form-control timepicker1" id="endtime" placeholder="Office End">
+
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-xs-8">
+
+                                    <select id="weeklyoff" name="weeklyoff" style="width:100%">
+                                        <option value="-1">Weekly Off</option>
+                                        <option value="0">Sunday</option>
+                                        <option value="1">Monday</option>
+                                        <option value="2">Tuesday</option>
+                                        <option value="3">Wednesday</option>
+                                        <option value="4">Thursday</option>
+                                        <option value="5">Friday</option>
+                                        <option value="6">Saturday</option>
+                                    </select>
+
+                                </div>
+
+                            </div>
+                            
+
+
+
+
+
+                        </div>
+
+                    </div>
+                }
+            }
+
+
+
+
+        </div>
+    </div>
+    
+    
+
+    <div class="row">
+        <div class="col-lg-offset-4 col-sm-offset-4 col-xs-offset-4 ">
+            <button class="btn btn-success" type="submit">Create Store</button>
+            <button class="btn btn-info" type="reset">Clear</button>
+        </div>
+    </div>
+
+    }
+
+}
+
+@section PageScripts{
+
+<script src="/assets/js/datetime/bootstrap-datepicker.js"></script>
+<script src="/assets/js/datetime/bootstrap-timepicker.js"></script>
+<script src="/assets/js/select2/select2.js"></script>
+
+<script>
+    
+        $("#region").select2();
+        $("#city").select2();
+        $("#area").select2();
+        $("#weeklyoff").select2();
+
+        $('#starttime').timepicker();
+        $('#endtime').timepicker();
+
+</script>
+
+    }
+

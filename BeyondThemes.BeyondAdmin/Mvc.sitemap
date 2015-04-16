@@ -74,13 +74,14 @@
       <mvcSiteMapNode title="Persian Layout" controller="Home" action="Persian" description="Persian Layout"/>
     </mvcSiteMapNode>-->
 
-  <mvcSiteMapNode title="Dashboard" controller="Home" action="Index" imageUrl="glyphicon glyphicon-home" description="dashboard"> 
-    
-   <mvcSiteMapNode title="Master Data" controller="Home" action="RTL" imageUrl="fa fa-table" description="">
+  <mvcSiteMapNode title="Profile" controller="Home" action="EmployeeProfile" imageUrl="glyphicon glyphicon-home" description="Employee Profile">
+
+    <mvcSiteMapNode title="Master Data" controller="Home" action="RTL" imageUrl="fa fa-table" description="">
       <mvcSiteMapNode title="Employee" controller="Home" action="AddEmployee" description="Add a New Employee"/>
-      <mvcSiteMapNode title="Entity" controller="Home" action="Persian" description="Persian Layout"/>
-    </mvcSiteMapNode>
-    
+     <mvcSiteMapNode title="Store" controller="Home" action="AddStore" description="Add a New Store"/>
+   </mvcSiteMapNode>
+
+
   </mvcSiteMapNode>
 
 </mvcSiteMap>

@@ -1,0 +1,386 @@
+﻿@{
+    ViewBag.Title = "Profile";
+    ViewBag.Description = "profile";
+    Layout = "~/Views/Shared/_Default.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="profile-container">
+            <div class="profile-header row">
+                <div class="col-lg-2 col-md-4 col-sm-12 text-center">
+                    <img src="/assets/img/avatars/divyia.jpg" alt="" class="header-avatar" />
+                </div>
+                <div class="col-lg-5 col-md-8 col-sm-12 profile-info">
+                    <div class="header-fullname">Swapna Singh</div>
+                    
+                        @Html.Bootstrap().InlineLabel("Active").Color(BootstrapColors.Success).Graded()
+
+
+                    </a>
+                    <div class="header-information">
+                        <strong>Walk 'n' Talk Mobile Stores</strong> <br />4th Floor, Saket Mall, Saket, New Delhi
+
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 profile-stats">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 stats-col">
+                            <div class="stats-value pink">284</div>
+                            <div class="stats-title">WORKING DAYS</div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 stats-col">
+                            <div class="stats-value pink">78 %</div>
+                            <div class="stats-title">ON TIME</div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 stats-col">
+                            <div class="stats-value pink">12 %</div>
+                            <div class="stats-title">ABSENT</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 inlinestats-col">
+                            Manager: KK Singh
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 inlinestats-col">
+                            DOJ: 30 Aug, 2014
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 inlinestats-col">
+                            Age: <strong>24</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-body">
+                <div class="col-lg-12">
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs tabs-flat  nav-justified" id="myTab11">
+                            <li class="active">
+                                <a data-toggle="tab" href="#messages">
+                                    Messages
+                                </a>
+                            </li>
+                            <li class="tab-red">
+                                <a data-toggle="tab" href="#attendance">
+                                    Attendance
+                                </a>
+                            </li>
+                            <li class="tab-palegreen">
+                                <a data-toggle="tab" id="contacttab" href="#contacts">
+                                    Contacts
+                                </a>
+                            </li>
+                            <li class="tab-yellow">
+                                <a data-toggle="tab" href="#settings">
+                                    More Details
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content tabs-flat">
+                            <div id="messages" class="tab-pane active">
+                                <h6 class="row-title before-orange">Post New Message</h6>
+                                <form method="post" class="well padding-bottom-10" onsubmit="return false;">
+                                    <span class="input-icon icon-right">
+                                        <textarea rows="2" class="form-control" placeholder="Post a new message"></textarea>
+                                        
+                                    </span>
+                                    <div class="padding-top-10 text-align-right">
+                                        <a class="btn btn-sm btn-primary">
+                                            Send
+                                        </a>
+                                    </div>
+                                </form>
+                                <h6 class="row-title before-orange">Recent Messages</h6>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="well with-header with-footer">
+                                            <div class="header bordered-danger">Well With Header & Footer</div>
+                                            hello
+                                            <div class="footer">Sent: 16/04/2015, 11:25 AM<span class="pull-right">Unread </span></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="well with-header with-footer">
+                                            <div class="header bordered-palegreen">Well With Header & Footer</div>
+                                            hello
+                                            <div class="footer">Sent: 16/04/2015, 11:25 AM<span class="pull-right">Read: 16/04/2015, 11:55 AM</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="well with-header with-footer">
+                                            <div class="header bordered-palegreen">Well With Header & Footer</div>
+                                            hello
+                                            <div class="footer">Sent: 16/04/2015, 11:25 AM<span class="pull-right">Read: 16/04/2015, 11:55 AM </span></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="well with-header with-footer">
+                                            <div class="header bordered-palegreen">Well With Header & Footer</div>
+                                            hello
+                                            <div class="footer">Sent: 16/04/2015, 11:25 AM<span class="pull-right">Read: 16/04/2015, 11:55 AM</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+
+                            <div id="attendance" class="tab-pane">
+                                hello
+                            </div>
+
+                            <div id="contacts" class="tab-pane">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="profile-contacts">
+
+                                            <div class="profile-badge orange"><i class="fa fa-phone orange"></i><span>Contact</span></div>
+                                            <div class="contact-info">
+                                                <p>
+                                                    Phone	: +91 7032906292 <br>
+                                                    Cell		: +91 9876466292
+                                                </p>
+                                                <p>
+                                                    Email		: swapna.singh@gmail.com
+                                                    <br>
+                                                    Skype		: swapna.singh
+                                                </p>
+                                                <p>
+                                                    Facebook	: facebook.com/swapna.singh
+                                                    <br>
+                                                    Twitter	: @@SwapnaS
+                                                </p>
+                                            </div>
+                                            <div class="profile-badge azure">
+                                                <i class="fa fa-map-marker azure"></i><span>Location</span>
+                                            </div>
+                                            <div class="contact-info">
+                                                <p>
+                                                    Address<br>
+                                                    Walk 'n' Talk Mobile Stores <br>
+                                                    4th Floor, Saket Mall<br>
+                                                    Saket, New Delhi 
+                                                </p>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div id="contact-map" class="animated flipInY"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="settings" class="tab-pane">
+                                <form role="form">
+                                    <div class="form-title">
+                                        Personal Information
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <span class="input-icon icon-right">
+                                                    <input type="text" class="form-control" placeholder="Name">
+                                                    <i class="fa fa-user blue"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <span class="input-icon icon-right">
+                                                    <input type="text" class="form-control" placeholder="Family">
+                                                    <i class="fa fa-user orange"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <span class="input-icon icon-right">
+                                                    <input type="text" class="form-control" placeholder="Phone">
+                                                    <i class="glyphicon glyphicon-earphone yellow"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <span class="input-icon icon-right">
+                                                    <input type="text" class="form-control" placeholder="Mobile">
+                                                    <i class="glyphicon glyphicon-phone palegreen"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="wide">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <span class="input-icon icon-right">
+                                                    <input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" placeholder="Birth Date">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <span class="input-icon icon-right">
+                                                    <input type="text" class="form-control" placeholder="Birth Place">
+                                                    <i class="fa fa-globe"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-title">
+                                        Social Networks
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <span class="input-icon icon-right">
+                                                    <input type="text" class="form-control" placeholder="Facebook">
+                                                    <i class="fa fa-facebook purple"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <span class="input-icon icon-right">
+                                                    <input type="text" class="form-control" placeholder="Twitter">
+                                                    <i class="fa fa-twitter azure"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <span class="input-icon icon-right">
+                                                    <input type="text" class="form-control" placeholder="Pinterest">
+                                                    <i class="fa fa-pinterest red"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <span class="input-icon icon-right">
+                                                    <input type="text" class="form-control" placeholder="Flickr">
+                                                    <i class="fa fa-flickr blue"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-title">
+                                        Contact Information
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <span class="input-icon icon-right">
+                                                    <input type="text" class="form-control" placeholder="Address 1">
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <span class="input-icon icon-right">
+                                                    <input type="text" class="form-control" placeholder="Address 1">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save Profile</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageScripts{
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+    <script src="https://maps.gstatic.com/intl/en_us/mapfiles/api-3/17/0/main.js" type="text/javascript"></script>
+
+    <script src="/assets/js/charts/flot/jquery.flot.js"></script>
+    <script src="/assets/js/charts/flot/jquery.flot.resize.js"></script>
+
+    <script>
+        //Google Map
+        $('#contacttab').click(function () {
+            function initialize() {
+                var myLatlng = new google.maps.LatLng(28.52818, 77.216687);
+                var mapOptions = {
+                    zoom: 15,
+                    scrollwheel: false,
+                    center: myLatlng,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
+                var map = new google.maps.Map(document.getElementById('contact-map'), mapOptions);
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    title: 'Map'
+                });
+            }
+            google.maps.event.addDomListener(window, 'click', initialize);
+        });
+
+        $(window).bind("load", function () {
+
+            /*Sets Themed Colors Based on Themes*/
+            themeprimary = getThemeColorFromCss('themeprimary');
+            themesecondary = getThemeColorFromCss('themesecondary');
+            themethirdcolor = getThemeColorFromCss('themethirdcolor');
+            themefourthcolor = getThemeColorFromCss('themefourthcolor');
+            themefifthcolor = getThemeColorFromCss('themefifthcolor');
+
+            //--------------------------Visitor Chart --->
+            var data = [{
+                color: themeprimary,
+                label: "Visits",
+                data: [[3, 10], [4, 13], [5, 12], [6, 16], [7, 19], [8, 19], [9, 24], [10, 19], [11, 18], [12, 21], [13, 17],
+                    [14, 14], [15, 12], [16, 14], [17, 15]]
+            }];
+            var options = {
+                series: {
+                    lines: {
+                        show: true,
+                        fill: true,
+                        fillColor: { colors: [{ opacity: 0.2 }, { opacity: 0 }] }
+                    },
+                    points: {
+                        show: true
+                    }
+                },
+                legend: {
+                    show: false
+                },
+                xaxis: {
+                    tickDecimals: 0,
+                    tickLength: 0,
+                    color: '#ccc'
+                },
+                yaxis: {
+                    min: 0,
+                    tickLength: 0,
+                    color: '#ccc'
+                },
+                grid: {
+                    hoverable: true,
+                    clickable: false,
+                    borderWidth: 0,
+                    aboveData: false,
+                    color: '#fbfbfb'
+
+                },
+                tooltip: true
+            };
+            
+        });
+    </script>
+}
