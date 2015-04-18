@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Blank Page";
+    ViewBag.Description = "blank page";
+    Layout = "~/Views/Shared/_Default.cshtml";
+}
+
+<h6 class="row-title before-blue">Large Databoxes</h6>
+<div class="row">
+    <div class="col-lg-4 col-sm-6 col-xs-12">
+        <div class="databox databox-lg radius-bordered databox-shadowed">
+            <div class="databox-left bg-white">
+                <div class="databox-sparkline">
+                    <span data-sparkline="bar" data-height="40px" data-width="100%" data-barwidth="7px" data-barspacing="3px" data-stackedbarcolor='["#11a9cc", "#ffce55"]'>
+                        2:2,2:3,3:2,1:3,3:3
+                    </span>
+                </div>
+            </div>
+            <div class="databox-right bordered-thick bordered-sky bg-white">
+                <span class="databox-number sky"><i class="fa fa-user"></i>2485</span>
+                <div class="databox-text darkgray">NEW & RETURNING USERS</div>
+                <div class="databox-stat bg-sky radius-bordered">
+                    <div class="stat-text">10 %</div>
+                    <i class="stat-icon fa fa-long-arrow-up"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-6 col-xs-12">
+        <div class="databox databox-lg radius-bordered databox-shadowed databox-graded">
+            <div class="databox-left bg-palegreen">
+                <div class="databox-piechart">
+                    <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="50" data-animate="500" data-linewidth="3" data-size="60" data-trackcolor="#aadc95"><span class="white font-90">50%</span></div>
+                </div>
+            </div>
+            <div class="databox-right">
+                <span class="databox-number green">206</span>
+                <div class="databox-text darkgray">TRAFFIC USED (GB)</div>
+                <div class="databox-stat bg-palegreen radius-bordered">
+                    <div class="stat-text">10%</div>
+                    <i class="stat-icon fa fa-arrow-up"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-6 col-xs-12">
+        <div class="databox databox-halved databox-lg radius-bordered databox-shadowed">
+            <div class="databox-left bg-white">
+                <div class="databox-sparkline">
+                    <span data-sparkline="compositebar" data-height="40px" data-width="100%"
+                          data-barcolor="#5db2ff" data-negbarcolor="#f4b400" data-zerocolor="#d73d32"
+                          data-barwidth="5px" data-barspacing="4px"
+                          data-fillcolor="false" data-linecolor="#e75b8d" data-spotradius="3" data-linewidth="2"
+                          data-composite="4, 1, 5, 7, 9, 9, 8, 7, 6, 6, 4, 7">
+                        8,4,0,1,4,6,2,4,4,8,10,7,10
+                    </span>
+                </div>
+            </div>
+            <div class="databox-right bg-pink">
+                <span class="databox-title white">Users</span>
+                <div class="databox-text white">Visit Statistics</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageScripts{
+
+}
