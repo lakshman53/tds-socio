@@ -9,7 +9,10 @@ namespace TDS.Socio.Controllers
 {
     public class HomeController : Controller
     {
-
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
         public ActionResult AddEmployee()
         {
             List<string> items = new List<string>();

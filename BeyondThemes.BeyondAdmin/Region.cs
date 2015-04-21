@@ -26,5 +26,7 @@ namespace TDS.Socio
     
         public virtual Employee Employee { get; set; }
         public virtual ICollection<Store> Stores { get; set; }
+
+
     }
 }
