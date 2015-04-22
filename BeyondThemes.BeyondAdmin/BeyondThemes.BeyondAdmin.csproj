@@ -276,6 +276,9 @@
     <Compile Include="Store.cs">
       <DependentUpon>azure_sociodataEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="tmpInTimeAnalysi.cs">
+      <DependentUpon>azure_sociodataEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="usp_getArea_Result.cs">
       <DependentUpon>azure_sociodataEntities.tt</DependentUpon>
     </Compile>
@@ -322,6 +325,7 @@
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\fonts\typicons.svg" />
     <Content Include="assets\fonts\weathericons-regular-webfont.svg" />
+    <Content Include="assets\img\475341-group-128.png" />
     <Content Include="assets\img\angle-down.png" />
     <Content Include="assets\img\app.png" />
     <Content Include="assets\img\attach-blue.png" />
@@ -339,12 +343,15 @@
     <Content Include="assets\img\avatars\Osvaldus-Valutis.jpg" />
     <Content Include="assets\img\avatars\Sergey-Azovskiy.jpg" />
     <Content Include="assets\img\avatars\Stephanie-Walter.jpg" />
+    <Content Include="assets\img\facilities.png" />
     <Content Include="assets\img\favicon.png" />
+    <Content Include="assets\img\icon_user.png" />
     <Content Include="assets\img\jquery.minicolors.png" />
     <Content Include="assets\img\logo-inverted.png" />
     <Content Include="assets\img\logo-rtl.png" />
     <Content Include="assets\img\logo-solo.png" />
     <Content Include="assets\img\logo.png" />
+    <Content Include="assets\img\People.ico" />
     <Content Include="assets\img\sort_asc.png" />
     <Content Include="assets\img\sort_asc_disabled.png" />
     <Content Include="assets\img\sort_both.png" />
@@ -500,6 +507,7 @@
     <Content Include="Views\Home\AddStore.cshtml" />
     <Content Include="Views\Home\EmployeeProfile.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
+    <None Include="Properties\PublishProfiles\socioadmin.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -582,50 +590,9 @@
     <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
-    <Content Include="Views\Home\Elements.cshtml" />
-    <Content Include="Views\Home\Tabs.cshtml" />
-    <Content Include="Views\Home\Modals.cshtml" />
-    <Content Include="Views\Home\Buttons.cshtml" />
-    <Content Include="Views\Home\FormLayouts.cshtml" />
-    <Content Include="Views\Home\FormInputs.cshtml" />
-    <Content Include="Views\Home\Widgets.cshtml" />
-    <Content Include="Views\Home\Databoxes.cshtml" />
-    <Content Include="Views\Home\Alerts.cshtml" />
     <Content Include="Views\Shared\_Empty.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\FontAwesome.cshtml" />
-    <Content Include="Views\Home\GlyphIcons.cshtml" />
-    <Content Include="Views\Home\Typicons.cshtml" />
-    <Content Include="Views\Home\WeatherIcons.cshtml" />
-    <Content Include="Views\Home\NestableList.cshtml" />
-    <Content Include="Views\Home\TreeView.cshtml" />
-    <Content Include="Views\Home\SimpleTables.cshtml" />
-    <Content Include="Views\Home\DataTables.cshtml" />
-    <Content Include="Views\Home\DataPickers.cshtml" />
-    <Content Include="Views\Home\Wizards.cshtml" />
-    <Content Include="Views\Home\FormValidation.cshtml" />
-    <Content Include="Views\Home\FormEditors.cshtml" />
-    <Content Include="Views\Home\Profile.cshtml" />
-    <Content Include="Views\Home\Calendar.cshtml" />
-    <Content Include="Views\Home\FlotCharts.cshtml" />
-    <Content Include="Views\Home\MorrisCharts.cshtml" />
-    <Content Include="Views\Home\SparklineCharts.cshtml" />
-    <Content Include="Views\Home\EasyPieCharts.cshtml" />
-    <Content Include="Views\Home\ChartJS.cshtml" />
-    <Content Include="Views\Home\Inbox.cshtml" />
-    <Content Include="Views\Home\ViewMessage.cshtml" />
-    <Content Include="Views\Home\Compose.cshtml" />
-    <Content Include="Views\Home\Timeline.cshtml" />
-    <Content Include="Views\Home\PricingTables.cshtml" />
-    <Content Include="Views\Home\Invoice.cshtml" />
     <Content Include="Views\Account\Lock.cshtml" />
-    <Content Include="Views\Home\Typography.cshtml" />
-    <Content Include="Views\Home\Error404.cshtml" />
-    <Content Include="Views\Home\Error500.cshtml" />
-    <Content Include="Views\Home\Grid.cshtml" />
     <Content Include="Views\Shared\_PersianLayout.cshtml" />
-    <Content Include="Views\Home\Persian.cshtml" />
-    <Content Include="Views\Home\Arabic.cshtml" />
     <Content Include="Views\Shared\_ArabicLayout.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />

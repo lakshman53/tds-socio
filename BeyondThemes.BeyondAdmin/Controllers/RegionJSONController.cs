@@ -16,13 +16,13 @@ namespace TDS.Socio.Controllers
         {
               //  return ctx.Regions.Include("Tags").Select(i => new { i.Region1, i.RegionId }).Take(5);
 
-            var records = (from t in ctx.Regions
+            var records = (from t in ctx.tmpInTimeAnalysis
                            select new
                            {
-                               Region1 = t.Region1,
-                               RegionId = t.RegionId,
+                              TimeRange = t.TimeRange,
+                              PercentPeople = t.PercentPeople
 
-                           }).Take(6);
+                           });
                           
             return Json(records);
 

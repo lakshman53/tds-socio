@@ -39,6 +39,7 @@ namespace TDS.Socio
         public virtual DbSet<OfferGroup> OfferGroups { get; set; }
         public virtual DbSet<Region> Regions { get; set; }
         public virtual DbSet<Store> Stores { get; set; }
+        public virtual DbSet<tmpInTimeAnalysi> tmpInTimeAnalysis { get; set; }
     
         public virtual int usp_AddArea(Nullable<int> level2id, Nullable<int> level3id, string entityName)
         {

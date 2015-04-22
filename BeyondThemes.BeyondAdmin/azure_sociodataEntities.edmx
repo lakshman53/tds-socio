@@ -78,14 +78,6 @@
           <Property Name="ClientEmpNum" Type="nvarchar" MaxLength="50" />
           <Property Name="EmpImage" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6005: The data type 'hierarchyid' is currently not supported for the target Entity Framework version; the column 'EntitiyHierarchyId' in the table 'sociodata.dbo.EntitiyHierarchy' was excluded.
-warning 6031: The column 'EntitiyHierarchyId' on the table/view 'sociodata.dbo.EntitiyHierarchy' was excluded, and is a key column.  The table/view has been excluded.  Please fix the entity in the schema file, and uncomment.
-        <EntityType Name="EntitiyHierarchy">
-          <Property Name="EntityId" Type="int" Nullable="false" />
-          <Property Name="EntityType" Type="int" Nullable="false" />
-          <Property Name="EntityName" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
         <EntityType Name="Entity">
           <Key>
             <PropertyRef Name="EntityId" />
@@ -144,6 +136,32 @@ warning 6031: The column 'EntitiyHierarchyId' on the table/view 'sociodata.dbo.E
           <Property Name="Region" Type="int" />
           <Property Name="StoreOff" Type="smallint" />
           <Property Name="StoreCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tmpInTimeAnalysis">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TimeRange" Type="varchar" MaxLength="50" />
+          <Property Name="PercentPeople" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sociodata.dbo.vAttendance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vAttendance">
+          <Key>
+            <PropertyRef Name="Region" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="Area" />
+            <PropertyRef Name="StoreName" />
+          </Key>
+          <Property Name="Region" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Area" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StoreName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LogDate" Type="date" />
+          <Property Name="Full Name" Type="nvarchar" MaxLength="4000" />
+          <Property Name="InTime" Type="time" Precision="7" />
+          <Property Name="OutTime" Type="time" Precision="7" />
         </EntityType>
         <Association Name="FK_Area_Employee">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
@@ -345,6 +363,19 @@ warning 6031: The column 'EntitiyHierarchyId' on the table/view 'sociodata.dbo.E
           <EntitySet Name="OfferGroups" EntityType="Self.OfferGroups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tmpInTimeAnalysis" EntityType="Self.tmpInTimeAnalysis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vAttendance" EntityType="Self.vAttendance" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vAttendance].[Region] AS [Region], 
+    [vAttendance].[City] AS [City], 
+    [vAttendance].[Area] AS [Area], 
+    [vAttendance].[StoreName] AS [StoreName], 
+    [vAttendance].[LogDate] AS [LogDate], 
+    [vAttendance].[Full Name] AS [Full Name], 
+    [vAttendance].[InTime] AS [InTime], 
+    [vAttendance].[OutTime] AS [OutTime]
+    FROM [dbo].[vAttendance] AS [vAttendance]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Area_Employee" Association="Self.FK_Area_Employee">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Area" EntitySet="Area" />
@@ -498,6 +529,8 @@ warning 6031: The column 'EntitiyHierarchyId' on the table/view 'sociodata.dbo.E
             <End Role="Region" EntitySet="Regions" />
             <End Role="Store" EntitySet="Stores" />
           </AssociationSet>
+          <EntitySet Name="tmpInTimeAnalysis" EntityType="sociodataModel.tmpInTimeAnalysi" />
+          <EntitySet Name="vAttendances" EntityType="sociodataModel.vAttendance" />
         </EntityContainer>
         <ComplexType Name="usp_getArea_Result">
           <Property Type="Int32" Name="EntityId" Nullable="false" />
@@ -832,6 +865,30 @@ warning 6031: The column 'EntitiyHierarchyId' on the table/view 'sociodata.dbo.E
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tmpInTimeAnalysi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeRange" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PercentPeople" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vAttendance">
+          <Key>
+            <PropertyRef Name="Region" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="Area" />
+            <PropertyRef Name="StoreName" />
+          </Key>
+          <Property Name="Region" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Area" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StoreName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LogDate" Type="DateTime" Precision="0" />
+          <Property Name="Full_Name" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="InTime" Type="Time" Precision="7" />
+          <Property Name="OutTime" Type="Time" Precision="7" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1018,6 +1075,29 @@ warning 6031: The column 'EntitiyHierarchyId' on the table/view 'sociodata.dbo.E
                 <ScalarProperty Name="Latitude" ColumnName="Latitude" />
                 <ScalarProperty Name="StoreName" ColumnName="StoreName" />
                 <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tmpInTimeAnalysis">
+            <EntityTypeMapping TypeName="sociodataModel.tmpInTimeAnalysi">
+              <MappingFragment StoreEntitySet="tmpInTimeAnalysis">
+                <ScalarProperty Name="PercentPeople" ColumnName="PercentPeople" />
+                <ScalarProperty Name="TimeRange" ColumnName="TimeRange" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vAttendances">
+            <EntityTypeMapping TypeName="sociodataModel.vAttendance">
+              <MappingFragment StoreEntitySet="vAttendance">
+                <ScalarProperty Name="OutTime" ColumnName="OutTime" />
+                <ScalarProperty Name="InTime" ColumnName="InTime" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full Name" />
+                <ScalarProperty Name="LogDate" ColumnName="LogDate" />
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

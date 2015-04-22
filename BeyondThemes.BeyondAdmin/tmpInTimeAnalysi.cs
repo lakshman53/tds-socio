@@ -12,19 +12,10 @@ namespace TDS.Socio
     using System;
     using System.Collections.Generic;
     
-    public partial class Region
+    public partial class tmpInTimeAnalysi
     {
-        public Region()
-        {
-            this.Stores = new HashSet<Store>();
-        }
-    
-        public int RegionId { get; set; }
-        public string Region1 { get; set; }
-        public Nullable<int> PersResponsible { get; set; }
-        public string RegionCode { get; set; }
-    
-        public virtual Employee Employee { get; set; }
-        public virtual ICollection<Store> Stores { get; set; }
+        public int Id { get; set; }
+        public string TimeRange { get; set; }
+        public Nullable<int> PercentPeople { get; set; }
     }
 }

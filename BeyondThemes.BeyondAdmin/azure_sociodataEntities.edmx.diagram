@@ -30,6 +30,8 @@
         <AssociationConnector Association="sociodataModel.FK_OfferGroups_Group" />
         <AssociationConnector Association="sociodataModel.FK_OfferGroups_Offer" />
         <AssociationConnector Association="sociodataModel.FK_Store_Region" />
+        <EntityTypeShape EntityType="sociodataModel.tmpInTimeAnalysi" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="sociodataModel.vAttendance" Width="1.5" PointX="0.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
