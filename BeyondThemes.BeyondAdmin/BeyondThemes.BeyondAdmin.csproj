@@ -237,6 +237,8 @@
       <DependentUpon>azure_sociodataEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EmpGroupDetailsController.cs" />
+    <Compile Include="Controllers\GetMessagesByGroupIdController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegionJSONController.cs" />
@@ -250,6 +252,12 @@
       <DependentUpon>azure_sociodataEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity.cs">
+      <DependentUpon>azure_sociodataEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getEmployeeGroupDetails_Result.cs">
+      <DependentUpon>azure_sociodataEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getMessagesByGroupId_Result.cs">
       <DependentUpon>azure_sociodataEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -508,6 +516,7 @@
     <Content Include="Views\Home\EmployeeProfile.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
     <None Include="Properties\PublishProfiles\socioadmin.pubxml" />
+    <Content Include="Views\Home\sendMessages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -544,7 +553,9 @@
     <Content Include="assets\js\fullcalendar\fullcalendar.min.js.map" />
     <Content Include="assets\js\tagsinput\bootstrap-tagsinput.min.js.map" />
     <Content Include="assets\js\toastr\toastr.min.js.map" />
-    <Content Include="Mvc.sitemap" />
+    <Content Include="Mvc.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="assets\fonts\WeatherIcons-Regular.otf" />
     <Content Include="assets\js\beyond.min.js.map">
       <DependentUpon>beyond.js</DependentUpon>

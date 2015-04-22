@@ -1,7 +1,166 @@
-﻿
-@{
-    ViewBag.Title = "sendMessages";
+﻿@{
+    ViewBag.Title = "Send Messages";
+    ViewBag.Description = "send messages";
+    Layout = "~/Views/Shared/_Default.cshtml";
 }
 
-<h2>sendMessages</h2>
+<div class="row">
+    <div class=" col-lg-12 col-sm-12 col-xs-12">
 
+        @using (var tabs = Html.Bootstrap().Begin(new Tabs("SimpleTab").Position(Direction.Top).Justified()))
+        {
+            tabs.Tab("Send Messages to New Group", BootstrapColors.Success);
+            tabs.Tab("Send Messages to Predefined Groups", BootstrapColors.Success);
+
+            using (tabs.BeginPanel())
+            {
+                <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
+            }
+            using (tabs.BeginPanel())
+            {
+                <div class="row">
+                    <div class="col-lg-4 col-sm-4 col-xs-8">
+
+
+                        @Html.DropDownList("groupName", ViewData["groups"] as SelectList, new { onchange = @"setEmployeeTable()", @id = "groupName", style = "width:100%;" })
+                        <div class="horizontal-space"></div>
+                          @Html.Bootstrap().TextBox("subject").Placeholder("Offer Subject")
+                        <div class="horizontal-space"></div>
+                        <textarea class="form-control" rows="6" id="message" name="message" placeholder="Offer Text"></textarea>
+                        <div class="horizontal-space"></div>
+
+
+                    </div>
+                    <div class="col-lg-8 col-sm-8 col-xs-12">
+
+                        <div class="widget-body no-padding">
+                            <div class="widget-main ">
+                                @using (var a = Html.Bootstrap().Begin(new Accordion("Accordion1").ActivePanel(1)))
+                                {
+                                    using (a.BeginPanel("Employees"))
+                                    {
+                                        <table id="employeeTable" class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                                <tr class="bordered-blueberry">
+                                                    <th>Employee Name</th>
+                                                    <th>Store</th>
+                                                    <th>City</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    }
+                                    using (a.BeginPanel("Message History"))
+                                    {
+                                        <table id="messagesTable" class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                                <tr class="bordered-blueberry">
+                                                    <th>Subject</th>
+                                                    <th>Message</th>
+                                                    <th>Sent</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+            }
+
+        }
+    </div>
+    </div>
+
+
+    @section PageScripts{
+
+    <!-- Select2 -->
+    <script src="/assets/js/select2/select2.js"></script>
+    <script>
+        $(" #groupName").select2({
+            placeholder: "Select a Group",
+            allowClear: true
+        });
+
+    </script>
+
+    <!-- DataTables -->
+
+
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.6/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.6/js/jquery.dataTables.js"></script>
+    
+    <script>
+
+        function setEmployeeTable() {
+            var urlStringEGD = ("/api/EmpGroupDetails/").concat(document.getElementById("groupName").value);
+            var urlStringMSG = ("/api/GetMessagesByGroupId/").concat(document.getElementById("groupName").value);
+
+            $('#employeeTable').dataTable().fnDestroy(false);
+            $('#messagesTable').dataTable().fnDestroy(false);
+
+
+           oemployeeTable = $('#employeeTable').dataTable(
+           {
+               "retrieve": true,
+               "bPaginate": true,
+               "bJQueryUI": false,  // ThemeRoller-stöd
+               "bLengthChange": false,
+               "bFilter": true,
+               "bSort": true,
+               "bInfo": true,
+               "bAutoWidth": true,
+               "bProcessing": false,
+               "iDisplayLength": 5,
+               "ajax": {
+                   "url": urlStringEGD,
+                   "dataSrc": ""
+               },
+               "columns": [
+               { "data": "EmpName" },
+               { "data": "StoreName" },
+               { "data": "City" }
+               ]
+           }
+           );
+
+           omessagesTable = $('#messagesTable').dataTable(
+           {
+               "retrieve": true,
+               "bPaginate": true,
+               "bJQueryUI": false,  // ThemeRoller-stöd
+               "bLengthChange": false,
+               "bFilter": true,
+               "bSort": true,
+               "bInfo": true,
+               "bAutoWidth": true,
+               "bProcessing": false,
+               "iDisplayLength": 5,
+               "ajax": {
+                   "url": urlStringMSG,
+                   "dataSrc": ""
+               },
+               "columns": [
+               { "data": "Subject" },
+               { "data": "Message" },
+               { "data": "Sent" }
+               ]
+           }
+           );
+           
+       }
+
+        $(document).ready(function () {
+
+            $('#employeeTable').dataTable();
+            $('#messagesTable').dataTable();
+
+        });
+       
+        </script>
+
+}

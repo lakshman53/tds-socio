@@ -145,24 +145,6 @@
           <Property Name="TimeRange" Type="varchar" MaxLength="50" />
           <Property Name="PercentPeople" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'sociodata.dbo.vAttendance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vAttendance">
-          <Key>
-            <PropertyRef Name="Region" />
-            <PropertyRef Name="City" />
-            <PropertyRef Name="Area" />
-            <PropertyRef Name="StoreName" />
-          </Key>
-          <Property Name="Region" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Area" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="StoreName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="LogDate" Type="date" />
-          <Property Name="Full Name" Type="nvarchar" MaxLength="4000" />
-          <Property Name="InTime" Type="time" Precision="7" />
-          <Property Name="OutTime" Type="time" Precision="7" />
-        </EntityType>
         <Association Name="FK_Area_Employee">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Area" Type="Self.Area" Multiplicity="*" />
@@ -319,6 +301,12 @@ warning 6002: The table/view 'sociodata.dbo.vAttendance' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="getEmployeeGroupDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getMessagesByGroupId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupId" Type="int" Mode="In" />
+        </Function>
         <Function Name="usp_AddArea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="level2id" Type="int" Mode="In" />
           <Parameter Name="level3id" Type="int" Mode="In" />
@@ -364,18 +352,6 @@ warning 6002: The table/view 'sociodata.dbo.vAttendance' does not have a primary
           <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tmpInTimeAnalysis" EntityType="Self.tmpInTimeAnalysis" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="vAttendance" EntityType="Self.vAttendance" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [vAttendance].[Region] AS [Region], 
-    [vAttendance].[City] AS [City], 
-    [vAttendance].[Area] AS [Area], 
-    [vAttendance].[StoreName] AS [StoreName], 
-    [vAttendance].[LogDate] AS [LogDate], 
-    [vAttendance].[Full Name] AS [Full Name], 
-    [vAttendance].[InTime] AS [InTime], 
-    [vAttendance].[OutTime] AS [OutTime]
-    FROM [dbo].[vAttendance] AS [vAttendance]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Area_Employee" Association="Self.FK_Area_Employee">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Area" EntitySet="Area" />
@@ -530,7 +506,12 @@ warning 6002: The table/view 'sociodata.dbo.vAttendance' does not have a primary
             <End Role="Store" EntitySet="Stores" />
           </AssociationSet>
           <EntitySet Name="tmpInTimeAnalysis" EntityType="sociodataModel.tmpInTimeAnalysi" />
-          <EntitySet Name="vAttendances" EntityType="sociodataModel.vAttendance" />
+          <FunctionImport Name="getEmployeeGroupDetails" ReturnType="Collection(sociodataModel.getEmployeeGroupDetails_Result)">
+          <Parameter Name="GroupId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getMessagesByGroupId" ReturnType="Collection(sociodataModel.getMessagesByGroupId_Result)">
+            <Parameter Name="GroupId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="usp_getArea_Result">
           <Property Type="Int32" Name="EntityId" Nullable="false" />
@@ -873,22 +854,19 @@ warning 6002: The table/view 'sociodata.dbo.vAttendance' does not have a primary
           <Property Name="TimeRange" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PercentPeople" Type="Int32" />
         </EntityType>
-        <EntityType Name="vAttendance">
-          <Key>
-            <PropertyRef Name="Region" />
-            <PropertyRef Name="City" />
-            <PropertyRef Name="Area" />
-            <PropertyRef Name="StoreName" />
-          </Key>
-          <Property Name="Region" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Area" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="StoreName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LogDate" Type="DateTime" Precision="0" />
-          <Property Name="Full_Name" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="InTime" Type="Time" Precision="7" />
-          <Property Name="OutTime" Type="Time" Precision="7" />
-        </EntityType>
+        <ComplexType Name="getEmployeeGroupDetails_Result">
+          <Property Type="Int32" Name="GroupId" Nullable="false" />
+          <Property Type="String" Name="EmpName" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="Region" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Area" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="StoreName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="getMessagesByGroupId_Result">
+          <Property Type="String" Name="subject" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="message" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="sent" Nullable="true" Precision="23" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1087,20 +1065,27 @@ warning 6002: The table/view 'sociodata.dbo.vAttendance' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="vAttendances">
-            <EntityTypeMapping TypeName="sociodataModel.vAttendance">
-              <MappingFragment StoreEntitySet="vAttendance">
-                <ScalarProperty Name="OutTime" ColumnName="OutTime" />
-                <ScalarProperty Name="InTime" ColumnName="InTime" />
-                <ScalarProperty Name="Full_Name" ColumnName="Full Name" />
-                <ScalarProperty Name="LogDate" ColumnName="LogDate" />
-                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
-                <ScalarProperty Name="Area" ColumnName="Area" />
-                <ScalarProperty Name="City" ColumnName="City" />
+          <FunctionImportMapping FunctionImportName="getEmployeeGroupDetails" FunctionName="sociodataModel.Store.getEmployeeGroupDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sociodataModel.getEmployeeGroupDetails_Result">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
                 <ScalarProperty Name="Region" ColumnName="Region" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getMessagesByGroupId" FunctionName="sociodataModel.Store.getMessagesByGroupId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sociodataModel.getMessagesByGroupId_Result">
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="sent" ColumnName="sent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

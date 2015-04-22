@@ -140,5 +140,23 @@ namespace TDS.Socio
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_getStores_Result>("usp_getStores", thisHIdParameter);
         }
+    
+        public virtual ObjectResult<getEmployeeGroupDetails_Result> getEmployeeGroupDetails(Nullable<int> groupId)
+        {
+            var groupIdParameter = groupId.HasValue ?
+                new ObjectParameter("GroupId", groupId) :
+                new ObjectParameter("GroupId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getEmployeeGroupDetails_Result>("getEmployeeGroupDetails", groupIdParameter);
+        }
+    
+        public virtual ObjectResult<getMessagesByGroupId_Result> getMessagesByGroupId(Nullable<int> groupId)
+        {
+            var groupIdParameter = groupId.HasValue ?
+                new ObjectParameter("GroupId", groupId) :
+                new ObjectParameter("GroupId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getMessagesByGroupId_Result>("getMessagesByGroupId", groupIdParameter);
+        }
     }
 }
