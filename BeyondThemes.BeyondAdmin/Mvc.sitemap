@@ -74,8 +74,11 @@
       <mvcSiteMapNode title="Persian Layout" controller="Home" action="Persian" description="Persian Layout"/>
     </mvcSiteMapNode>-->
 
-  <mvcSiteMapNode title="Dashboard" controller="Home" action="Dashboard" imageUrl="fa fa-tachometer" description="Attendance Dashboard">
+  <mvcSiteMapNode title="Home" controller="Home" action="Dashboard" imageUrl="fa fa-tachometer" description="Attendance Dashboard">
       <mvcSiteMapNode title="Send Messages" controller="Home" action="sendMessages" imageUrl="fa fa-comment-o" description="Send Offers to Employees"/>
+    <mvcSiteMapNode title="Employee Profile" controller="Home" action="EmployeeProfile" imageUrl="fa fa-user" description="View Employee Profile"/>
+    <mvcSiteMapNode title="Employee Attendance" controller="Home" action="AttendanceView" imageUrl="fa fa-check" description="View Details"/>
+
 
     <mvcSiteMapNode title="Master Data" controller="Home" action="RTL" imageUrl="fa fa-table" description="">
       <mvcSiteMapNode title="Employee" controller="Home" action="AddEmployee" description="Add a New Employee"/>

@@ -29,6 +29,12 @@ namespace TDS.Socio.Controllers
             return View();
         }
 
+        public ActionResult AttendanceView()
+        {
+            return View();
+        }
+
+
         public ActionResult EmployeeProfile()
         {
             return View();
@@ -53,6 +59,7 @@ namespace TDS.Socio.Controllers
             List<Group> objObjectsList = (from data in objentity.Groups.OrderByDescending(x => x.GroupId) select data).ToList();
 
             ViewData["groups"] = new SelectList(objObjectsList, "GroupId", "GroupName");
+            ViewData["employees"] = new SelectList(objentity.empDetailForDropDown(), "EmpId", "EmpName");
 
            
             return View();

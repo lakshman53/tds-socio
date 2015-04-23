@@ -1,4 +1,6 @@
-﻿@{
+﻿
+
+@{
     ViewBag.Title = "Send Messages";
     ViewBag.Description = "send messages";
     Layout = "~/Views/Shared/_Default.cshtml";
@@ -7,28 +9,59 @@
 <div class="row">
     <div class=" col-lg-12 col-sm-12 col-xs-12">
 
-        @using (var tabs = Html.Bootstrap().Begin(new Tabs("SimpleTab").Position(Direction.Top).Justified()))
+        @using (var tabs = Html.Bootstrap().Begin(new Tabs("SimpleTab").Position(Direction.Top).Justified().ActiveTab(3)))
         {
-            tabs.Tab("Send Messages to New Group", BootstrapColors.Success);
-            tabs.Tab("Send Messages to Predefined Groups", BootstrapColors.Success);
+            tabs.Tab("Create a Group", BootstrapColors.Success);
+            tabs.Tab("Assign Employees to  Group", BootstrapColors.Success);
+            tabs.Tab("Send Messages", BootstrapColors.Success);
 
             using (tabs.BeginPanel())
             {
-                <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
+                <p></p>
+            }
+
+            using (tabs.BeginPanel())
+            {
+                @Html.BeginForm("Create", "EmployeeGroup", FormMethod.Post)
+                {
+                    <fieldset>
+                     <div class="row">
+
+                         <div class="col-lg-8 col-md-8 col-xs-12">
+                             @Html.DropDownList("empList", ViewData["employees"] as SelectList, new { @id = "empList", style = "width:100%;" })
+                         </div>
+
+                         <div class="col-lg-4 col-md-4 col-xs-12">
+                             @Html.DropDownList("groupName", ViewData["groups"] as SelectList, new { @id = "groupName1", style = "width:100%;" })
+                         </div>
+
+
+
+                     </div>
+                     <div align="right"><input type="submit" name="Add" class="btn btn-success" value="Add Employee to Group"></div>
+        
+                </fieldset>     
+
+                }
             }
             using (tabs.BeginPanel())
             {
                 <div class="row">
                     <div class="col-lg-4 col-sm-4 col-xs-8">
 
+                        @using (Html.BeginForm("Create","Offers",FormMethod.Post)) { 
+    <fieldset>
 
-                        @Html.DropDownList("groupName", ViewData["groups"] as SelectList, new { onchange = @"setEmployeeTable()", @id = "groupName", style = "width:100%;" })
-                        <div class="horizontal-space"></div>
-                          @Html.Bootstrap().TextBox("subject").Placeholder("Offer Subject")
-                        <div class="horizontal-space"></div>
-                        <textarea class="form-control" rows="6" id="message" name="message" placeholder="Offer Text"></textarea>
-                        <div class="horizontal-space"></div>
+        @Html.DropDownList("groupName", ViewData["groups"] as SelectList, new { onchange = @"setEmployeeTable()", @id = "groupName", style = "width:100%;" })
+        <div class="horizontal-space"></div>
+        @Html.Bootstrap().TextBox("subject").Placeholder("Offer Subject")
+        <div class="horizontal-space"></div>
+        <textarea class="form-control" rows="6" id="message" name="message" placeholder="Offer Text"></textarea>
+        <div class="horizontal-space"></div>
+        <input type="submit" name="Send" class="btn btn-success" value="Send Message"> 
 
+    </fieldset>
+                        }
 
                     </div>
                     <div class="col-lg-8 col-sm-8 col-xs-12">
@@ -82,6 +115,16 @@
     <script>
         $(" #groupName").select2({
             placeholder: "Select a Group",
+            allowClear: true
+        });
+
+        $(" #groupName1").select2({
+            placeholder: "Select a Group",
+            allowClear: true
+        });
+
+        $(" #empList").select2({
+            placeholder: "Select an Employee",
             allowClear: true
         });
 

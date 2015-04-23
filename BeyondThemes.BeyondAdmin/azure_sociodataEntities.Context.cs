@@ -158,5 +158,25 @@ namespace TDS.Socio
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getMessagesByGroupId_Result>("getMessagesByGroupId", groupIdParameter);
         }
+    
+        public virtual ObjectResult<getAttendance_Result> getAttendance()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getAttendance_Result>("getAttendance");
+        }
+    
+        public virtual ObjectResult<getAttendanceDetails_Result> getAttendanceDetails()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getAttendanceDetails_Result>("getAttendanceDetails");
+        }
+    
+        public virtual ObjectResult<Nullable<System.DateTime>> getLocalDateTime()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.DateTime>>("getLocalDateTime");
+        }
+    
+        public virtual ObjectResult<empDetailForDropDown_Result> empDetailForDropDown()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<empDetailForDropDown_Result>("empDetailForDropDown");
+        }
     }
 }

@@ -301,9 +301,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="empDetailForDropDown" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="getAttendance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="getAttendanceDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="getEmployeeGroupDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="GroupId" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetLocalDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="datetime">
+          <Parameter Name="TimezoneDiffInHour" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="getLocalDateTime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="getMessagesByGroupId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="GroupId" Type="int" Mode="In" />
         </Function>
@@ -510,8 +517,12 @@
           <Parameter Name="GroupId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getMessagesByGroupId" ReturnType="Collection(sociodataModel.getMessagesByGroupId_Result)">
-            <Parameter Name="GroupId" Mode="In" Type="Int32" />
+          <Parameter Name="GroupId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="getAttendance" ReturnType="Collection(sociodataModel.getAttendance_Result)" />
+          <FunctionImport Name="getAttendanceDetails" ReturnType="Collection(sociodataModel.getAttendanceDetails_Result)" />
+          <FunctionImport Name="getLocalDateTime" ReturnType="Collection(DateTime)" />
+          <FunctionImport Name="empDetailForDropDown" ReturnType="Collection(sociodataModel.empDetailForDropDown_Result)" />
         </EntityContainer>
         <ComplexType Name="usp_getArea_Result">
           <Property Type="Int32" Name="EntityId" Nullable="false" />
@@ -867,6 +878,30 @@
           <Property Type="String" Name="message" Nullable="true" MaxLength="255" />
           <Property Type="DateTime" Name="sent" Nullable="true" Precision="23" />
         </ComplexType>
+        <ComplexType Name="getAttendance_Result">
+          <Property Type="String" Name="EmpName" Nullable="true" MaxLength="4000" />
+          <Property Type="DateTime" Name="LogDate" Nullable="true" />
+          <Property Type="Time" Name="InTime" Nullable="true" />
+          <Property Type="Time" Name="OutTime" Nullable="true" />
+          <Property Type="String" Name="Region" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Area" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="StoreName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="getAttendanceDetails_Result">
+          <Property Type="String" Name="EmpName" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="LogDate" Nullable="true" MaxLength="20" />
+          <Property Type="Time" Name="InTime" Nullable="true" />
+          <Property Type="Time" Name="OutTime" Nullable="true" />
+          <Property Type="String" Name="Region" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Area" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="StoreName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="empDetailForDropDown_Result">
+          <Property Type="Int32" Name="EmpId" Nullable="false" />
+          <Property Type="String" Name="EmpName" Nullable="true" MaxLength="4000" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1083,6 +1118,43 @@
                 <ScalarProperty Name="subject" ColumnName="subject" />
                 <ScalarProperty Name="message" ColumnName="message" />
                 <ScalarProperty Name="sent" ColumnName="sent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getAttendance" FunctionName="sociodataModel.Store.getAttendance">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sociodataModel.getAttendance_Result">
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="LogDate" ColumnName="LogDate" />
+                <ScalarProperty Name="InTime" ColumnName="InTime" />
+                <ScalarProperty Name="OutTime" ColumnName="OutTime" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getAttendanceDetails" FunctionName="sociodataModel.Store.getAttendanceDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sociodataModel.getAttendanceDetails_Result">
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="LogDate" ColumnName="LogDate" />
+                <ScalarProperty Name="InTime" ColumnName="InTime" />
+                <ScalarProperty Name="OutTime" ColumnName="OutTime" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getLocalDateTime" FunctionName="sociodataModel.Store.getLocalDateTime" />
+          <FunctionImportMapping FunctionImportName="empDetailForDropDown" FunctionName="sociodataModel.Store.empDetailForDropDown">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sociodataModel.empDetailForDropDown_Result">
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

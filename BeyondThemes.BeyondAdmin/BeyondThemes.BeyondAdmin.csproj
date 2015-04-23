@@ -238,11 +238,15 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EmpGroupDetailsController.cs" />
+    <Compile Include="Controllers\getAttendanceController.cs" />
     <Compile Include="Controllers\GetMessagesByGroupIdController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegionJSONController.cs" />
     <Compile Include="Designation.cs">
+      <DependentUpon>azure_sociodataEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="empDetailForDropDown_Result.cs">
       <DependentUpon>azure_sociodataEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="EmpGroup.cs">
@@ -252,6 +256,12 @@
       <DependentUpon>azure_sociodataEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity.cs">
+      <DependentUpon>azure_sociodataEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getAttendanceDetails_Result.cs">
+      <DependentUpon>azure_sociodataEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getAttendance_Result.cs">
       <DependentUpon>azure_sociodataEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="getEmployeeGroupDetails_Result.cs">
@@ -267,8 +277,11 @@
       <DependentUpon>azure_sociodataEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EmpGrpController.cs" />
+    <Compile Include="Models\EmployeeGroupController.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\OffersController.cs" />
     <Compile Include="Models\RegionsController.cs" />
     <Compile Include="Offer.cs">
       <DependentUpon>azure_sociodataEntities.tt</DependentUpon>
@@ -517,6 +530,7 @@
     <Content Include="Views\Home\Dashboard.cshtml" />
     <None Include="Properties\PublishProfiles\socioadmin.pubxml" />
     <Content Include="Views\Home\sendMessages.cshtml" />
+    <Content Include="Views\Home\AttendanceView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -620,6 +634,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Default\" />
+    <Folder Include="Views\EmployeeGroup\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
