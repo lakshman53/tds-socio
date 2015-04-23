@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "View Attendance";
+    ViewBag.Description = "Attendance";
+    Layout = "~/Views/Shared/_Default.cshtml";
+}
+
+<div class="col-lg-12 col-sm-12 col-xs-12">
+    <table id="attendance" class="table table-striped table-bordered table-hover">
+        <thead class="bordered-blueberry">
+            <tr>
+                <th>Emp Name</th>
+                <th>Store Name</th>
+                <th>Region</th>
+                <th>City</th>
+                <th>Log Date</th>
+                <th>In Time</th>
+                <th>Out Time</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+</div>
+
+
+@section PageScripts {
+
+
+<!-- jQuery -->
+<script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.6/js/jquery.dataTables.js"></script>
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.6/css/jquery.dataTables.css">
+
+
+<script>
+        var oAttendanceTable = null;
+
+        function InitAttendanceDataTable() {
+            oAttendanceTable = $('#attendance').dataTable(
+            {
+                "retrieve": true,
+                "bPaginate": false,
+                "bJQueryUI": true,  // ThemeRoller-stöd
+                "bLengthChange": false,
+                "bFilter": false,
+                "bSort": false,
+                "bInfo": false,
+                "bAutoWidth": true,
+                "bProcessing": false,
+                "iDisplayLength": 10,
+                "ajax": {
+                    "url": "/api/getAttendance",
+                    "dataSrc": ""
+                },
+                "columns": [
+                { "data": "EmpName" },
+                { "data": "StoreName" },
+                { "data": "Region" },
+                { "data": "City" },
+                { "data": "LogDate" },
+                { "data": "InTime" },
+                { "data": "OutTime" }
+                ]
+            });
+        }
+
+        var table = $('#attendance').DataTable({
+            "retrieve": true,
+            "bPaginate": false,
+            "bJQueryUI": true,  // ThemeRoller-stöd
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": false,
+            "bInfo": false,
+            "bAutoWidth": true,
+            "bProcessing": false,
+            "iDisplayLength": 10,
+            "ajax": {
+                "url": "/api/getAttendance",
+                "dataSrc": ""
+            },
+            "columns": [
+                { "data": "EmpName" },
+                { "data": "StoreName" },
+                { "data": "Region" },
+                { "data": "City" },
+                { "data": "LogDate" },
+                { "data": "InTime" },
+                { "data": "OutTime" }
+            ]
+        });
+
+        setInterval(function () { table.ajax.reload(); }, 10000);
+
+        $(document).ready(function () {
+            InitAttendanceDataTable();
+        });
+
+</script>
+
+
+}
